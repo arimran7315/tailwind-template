@@ -1,0 +1,102 @@
+ /* Ensure smooth transitions for theme changes */
+ html,
+ body {
+     transition: background-color 0.3s, color 0.3s;
+ }
+
+ /* Light mode default styles */
+ [data-theme="light"] {
+     --bg-color: #f3f4f6;
+     --text-color: #1f2937;
+     --footer-bg: rgba(17, 24, 39, 0.9);
+     --footer-text: #e0e7ff;
+     --bg-white: #fff;
+ }
+
+ /* Dark mode styles */
+ [data-theme="dark"] {
+     --bg-color: #1f2937;
+     --text-color: #e5e7eb;
+     --footer-bg: rgba(17, 24, 39, 0.95);
+     --footer-text: #f3f4f6;
+     --bg-white: #19212c;
+ }
+
+ /* Apply theme variables */
+ body {
+     background-color: var(--bg-color);
+     color: var(--text-color);
+ }
+
+ .bg-white {
+     background: var(--bg-white);
+ }
+.bg-field{
+    background-color: var(--bg-color);
+}
+ footer {
+     background-color: var(--footer-bg);
+     color: var(--footer-text);
+ }
+
+ /* Ensure select dropdown matches theme */
+ select {
+     background-color: var(--footer-bg);
+     color: var(--footer-text);
+     border-color: rgba(99, 102, 241, 0.2);
+ }
+
+ /* Hide screen reader only elements */
+ .sr-only {
+     position: absolute;
+     width: 1px;
+     height: 1px;
+     padding: 0;
+     margin: -1px;
+     overflow: hidden;
+     clip: rect(0, 0, 0, 0);
+     border: 0;
+ }
+
+ .animate-bounce {
+     animation: bounce 2s infinite;
+     /* Slower bounce (2 seconds per cycle) */
+ }
+
+ @keyframes bounce {
+
+     0%,
+     100% {
+         transform: translateY(0);
+         /* Start and end at normal position */
+     }
+
+     50% {
+         transform: translateY(-5px);
+         /* Only move up 10px (smaller bounce) */
+     }
+}
+@keyframes leftRight {
+    0%, 100% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+  }
+
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.animate-scroll {
+    animation: scroll 20s linear infinite;
+}
+
+.logo-container:hover .animate-scroll {
+    animation-play-state: paused;
+}
+ /* Fixed hover selector */
+ .scroll-container:hover .animate-scroll {
+    animation-play-state: paused !important;
+}
+.active{
+    background-color: rgba(255, 255, 255, 0.1);
+}
